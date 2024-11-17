@@ -2,18 +2,64 @@
 describe('Homepage', () => {
     beforeEach(() => {
         cy.visit('http://localhost:3001')
+        })
     })
 
     it('successfuylly loads', () => {
-            cy.visit('http://localhost:3001')
+        cy.visit('http://localhost:3001')
     })
-    it('start quiz', () => {
-      cy.get('button').contains("Start").click()
+    it('when I click the start quiz button a question is prompted ', () => {
+        cy.visit('http://localhost:3001')
+        cy.get('button').contains("Start").click()
     })
-    it('complete question prompted with next question', () => {
+    it('when i answer a question another question is prompted', () => {
+        cy.visit('http://localhost:3001')
         cy.get('button').contains("Start").click()
         cy.get('button').contains("1").click()
-      })
-  })
+    })
+    it('when all the questions are answered the quiz is over', () => {
+        cy.visit('http://localhost:3001')
+        cy.get('button').contains("Start").click()
+        cy.get('button').contains("1").click()
+        cy.get('button').contains("2").click()
+        cy.get('button').contains("3").click()
+        cy.get('button').contains("4").click()
+        cy.get('button').contains("4").click()
+        cy.get('button').contains("3").click()
+        cy.get('button').contains("2").click()
+        cy.get('button').contains("2").click()
+        cy.get('button').contains("1").click()
+        cy.get('button').contains("4").click()
+        cy.contains('Quiz Completed')
+    })
+    it('when the quiz is over the score is presented ', () => {
+        cy.visit('http://localhost:3001')
+        cy.get('button').contains("Start").click()
+        cy.get('button').contains("1").click()
+        cy.get('button').contains("2").click()
+        cy.get('button').contains("3").click()
+        cy.get('button').contains("4").click()
+        cy.get('button').contains("4").click()
+        cy.get('button').contains("3").click()
+        cy.get('button').contains("2").click()
+        cy.get('button').contains("2").click()
+        cy.get('button').contains("1").click()
+        cy.get('button').contains("4").click()
+        cy.get('.alert')
+    })
 
-
+    it('when the test is over the user is prompted to start again', () => {
+        cy.visit('http://localhost:3001')
+        cy.get('button').contains("Start").click()
+        cy.get('button').contains("1").click()
+        cy.get('button').contains("2").click()
+        cy.get('button').contains("3").click()
+        cy.get('button').contains("4").click()
+        cy.get('button').contains("4").click()
+        cy.get('button').contains("3").click()
+        cy.get('button').contains("2").click()
+        cy.get('button').contains("2").click()
+        cy.get('button').contains("1").click()
+        cy.get('button').contains("4").click()
+        cy.get('button').contains("Take New Quiz").click()
+    })
