@@ -39,6 +39,8 @@ To Install/Run this program:
 
 ## Usage
 
+LINK FOR THE WALK THROUGH VIDEO
+https://drive.google.com/file/d/1-c1P3N93kpQu9ZSdJii0WSDjQizue5xo/view?usp=sharing
 
 ## License
 
